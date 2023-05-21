@@ -27,7 +27,7 @@ var Knative = KnativeConfigStruct{
 		"https://raw.githubusercontent.com/vhive-serverless/vHive/main/configs/metallb/metallb-ipaddresspool.yaml",
 		"https://raw.githubusercontent.com/vhive-serverless/vHive/main/configs/metallb/metallb-l2advertisement.yaml"},
 	LocalRegistryRepoVolumeSize:          "5Gi",
-	LocalRegistryVolumeConfigUrl:         "https://raw.githubusercontent.com/vhive-serverless/vHive/main/configs/istio/istio-minimal-operator.yaml",
+	LocalRegistryVolumeConfigUrl:         "https://raw.githubusercontent.com/vhive-serverless/vHive/main/configs/registry/repository-volume.yaml",
 	LocalRegistryDockerRegistryConfigUrl: "https://raw.githubusercontent.com/vhive-serverless/vHive/main/configs/registry/docker-registry.yaml",
 	LocalRegistryHostUpdateConfigUrl:     "https://raw.githubusercontent.com/vhive-serverless/vHive/main/configs/registry/repository-update-hosts.yaml",
 	MagicDNSConfigUrl:                    "https://raw.githubusercontent.com/vhive-serverless/vHive/main/configs/knative_yamls/serving-default-domain.yaml",
