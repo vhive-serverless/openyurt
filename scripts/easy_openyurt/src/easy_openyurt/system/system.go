@@ -179,9 +179,9 @@ func DownloadToTmpDir(urlTemplate string, pars ...any) (string, error) {
 func ExtractToDir(filePath string, dirPath string, privileged bool) error {
 	var err error
 	if privileged {
-		_, err = ExecShellCmd("sudo tar -Cxzvf %s %s", dirPath, filePath)
+		_, err = ExecShellCmd("sudo tar -xzvf %s -C %s", filePath, dirPath)
 	} else {
-		_, err = ExecShellCmd("tar -Cxzvf %s %s", dirPath, filePath)
+		_, err = ExecShellCmd("tar -xzvf %s -C %s", filePath, dirPath)
 	}
 	return err
 }
@@ -422,7 +422,7 @@ func SystemInit() {
 	case "ubuntu":
 		// Download Google Cloud public signing key and Add the Kubernetes apt repository
 		logs.WaitPrintf("Adding the Kubernetes apt repository")
-		_, err = ExecShellCmd("sudo mkdir -p /etc/apt/keyrings && sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg && echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main' | sudo tee /etc/apt/sources.list.d/kubernetes.list")
+		_, err = ExecShellCmd("sudo mkdir -p /etc/apt/keyrings && sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://dl.k8s.io/apt/doc/apt-key.gpg && echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main' | sudo tee /etc/apt/sources.list.d/kubernetes.list")
 		logs.CheckErrorWithTagAndMsg(err, "Failed to add the Kubernetes apt repository!\n")
 		// Install kubeadm, kubelet, kubectl via apt
 		logs.WaitPrintf("Installing kubeadm, kubelet, kubectl")
